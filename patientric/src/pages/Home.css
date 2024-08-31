@@ -1,0 +1,26 @@
+h1.title, h3.description {
+    margin: 0;
+    padding: 1rem;
+    text-align: center;
+    flex-grow: 1;
+  }
+  
+  .carousel-container {
+    max-width: 1000px; /* Adjust this value to your desired width */
+    margin: 0 auto;
+  }
+  
+  .carousel-caption {
+    color: white; /* Make all text white */
+    background-color: rgb(255, 255, 255, 0.7); /* Black background with 50% opacity */
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .carousel-caption h5 {
+    color: black; /* Ensure the heading text is white */
+  }
+  
+  .carousel-caption p {
+    color: black; /* Ensure the paragraph text is white */
+  }
