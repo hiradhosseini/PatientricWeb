@@ -1,5 +1,18 @@
 from groq import Groq
 from config import GROQ_API_KEY
+from config import OPENAI_API_KEY
+from openai import OpenAI
+
+
+def text_to_speech(text):
+    client = OpenAI(api_key=OPENAI_API_KEY)
+    response = client.audio.speech.create(
+        model="tts-1",
+        voice="alloy",
+        input=text,
+    )
+
+    response.stream_to_file("output.mp3")
 
 
 client = Groq(api_key=GROQ_API_KEY)
@@ -9,7 +22,7 @@ def chat(input, chat_history=""):
         messages=[
             {
                 "role": "system",
-                "content": "Pretend you are a mock patient who is speaking with a medical student (the user). You have symptoms of headache and nausea. Please try to keep your answers brief and only directly address the questions that the student asks you. Express that you are in great discomfort. Do not talk about being a large language model EVER."
+                "content": "Pretend you are a mock patient who is speaking with a medical student (the user). You have symptoms of headache and nausea. Please try to keep your answers brief and only directly address the questions that the student asks you. Express that you are in great discomfort. Do not talk about being a large language model EVER. Do not give action statements or qualifiers such as gritting teeth or anxiously. Instead only use language which can express those characteristics, such as incorporating nervous or angry language."
             },
             {
                 "role": "system",
@@ -43,5 +56,6 @@ if __name__ == "__main__":
         if user_input.lower() in ['quit', 'exit']:
             break
         response = chat(user_input, chat_history)
+        text_to_speech(response)
         chat_history = chat_history + "\nAI: " + response
 
