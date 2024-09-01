@@ -15,8 +15,8 @@ def text_to_speech(text):
     response.stream_to_file("output.mp3")
 
 
-client = Groq(api_key=GROQ_API_KEY)
 def chat(input, chat_history=""):
+    client = Groq(api_key=GROQ_API_KEY)
     completion = client.chat.completions.create(
         model="llama-3.1-70b-versatile",
         messages=[
