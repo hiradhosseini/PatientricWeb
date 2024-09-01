@@ -2,7 +2,6 @@ import React from "react";
 import useSpeechToText from "../hooks/useSpeechToText";
 
 export default function MedEd() {
-    // Use the custom hook inside the component where you need it
     const { isListening, transcript, startListening, stopListening } = useSpeechToText();
 
     const startStopListening = () => {
